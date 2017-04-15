@@ -63,12 +63,14 @@ def delete_pin():
 
 @app.route('/pin/<string:pin_id>')
 def display_one_pin(pin_id):
-    context_dict = {}
     pin = Pin.query.filter_by(id=pin_id).first()
     if pin:
-        lat_input = 40.7527
-        lng_input = -73.9772
+        lat_input = pin.lat
+        lng_input = pin.lng
         latLng_input = True
     else:
         print("Pin not found")
-    return render_template('index.html.j2', lat=lat_input, lng = lng_input, latLng = latLng_input)
+    return render_template('index.html.j2', lat=lat_input,
+                                            lng = lng_input,
+                                            latLng_inputted = latLng_input)
+                                            

@@ -29,8 +29,32 @@ def authorized():
         )
     session['google_token'] = (resp['access_token'], '')
     me = google.get('userinfo')
+    email = me.data['email']
+    exists = User.query.filter_by(email=email).first()
+    if not exists:
+        db.add(User(email))
+        db.commit()
     return jsonify({"data": me.data})
 
 @google.tokengetter
 def get_google_oauth_token():
     return session.get('google_token')
+
+@app.route('/pin/create', methods=['POST'])
+def create_pin():
+    name = request.form['name']
+    user_id = request.form['user_id']
+    description = request.form['description']
+    pin = Pin(name, user_id, description)
+    db.session.add(pin)
+    db.session.commit()
+    return redirect(url_for('index'))
+
+@app.route('/pin/delete', methods=['POST'])
+def delete_pin():
+    pin_id = int(request.form['pin_id'])
+    pin = Pin.query.filter_by(id=pin_id).first()
+    if pin:
+        db.session.delete(pin)
+        db.session.commit()
+    return redirect(url_for('index'))

@@ -73,15 +73,15 @@ def delete_pin():
 @app.route('/pin/<string:pin_id>')
 def display_one_pin(pin_id):
     pin = Pin.query.filter_by(id=pin_id).first()
-    if pin:
-        lat_input = pin.lat
-        lng_input = pin.lng
-        latLng_input = True
-    else:
-        flash("Pin not found.")
-    return render_template('index.html.j2', lat=lat_input,
-                                            lng = lng_input,
-                                            latLng_inputted = latLng_input)
+    if not pin:
+        return redirect(url_for('index'))
+    me = google.get('userinfo')
+    if 'error' in me.data:
+        return redirect(url_for('logout'))
+    email = me.data['email']
+    user = User.query.filter_by(email=email).first()
+    pins = Pin.query.filter_by(user_id=user.id).all()
+    return render_template('index.html.j2', pin=pin, pins=pins)
 
 @app.route('/user/<string:email>')
 def display_users_pins(email):

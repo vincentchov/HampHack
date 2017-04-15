@@ -53,3 +53,8 @@
 .tap-target-wrapper {
   position: fixed !important;
 }
+
+.header-logo {
+  margin: 5px 10px 0 10px;
+  width: 50px;
+}

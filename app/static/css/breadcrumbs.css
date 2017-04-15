@@ -17,6 +17,7 @@
   right: 30px;
 }
 
+
 #cancel-drop {
   position: absolute;
   bottom: 42px;
@@ -32,6 +33,19 @@
   margin-top: 65px !important;
 }
 
+#pin-header {
+  font-weight: 300;
+}
+
 .brand-logo {
   padding-left: 10px !important;
+}
+
+.add-pin-help {
+  color: white;
+  position: relative !important;
+}
+
+.tap-target-wrapper {
+  position: fixed !important;
 }

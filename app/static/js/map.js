@@ -23,6 +23,7 @@ function placeMarker(location) {
         position: location,
         map: map
     });
+    enterPinForm();
 }
 
 function togglePlacementMode() {
@@ -49,4 +50,8 @@ function placeAllMarkers(pins){
         var latLng = {lat: pins[i].lat, lng: pins[i].lng};
         placeMarker(latLng);
     }
+}
+
+function enterPinForm() {
+  $('#modal1').modal('open');
 }

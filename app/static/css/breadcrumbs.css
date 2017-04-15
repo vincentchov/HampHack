@@ -17,6 +17,7 @@
   right: 30px;
 }
 
+
 #cancel-drop {
   position: absolute;
   bottom: 42px;
@@ -30,6 +31,10 @@
 
 .left-menu {
   margin-top: 65px !important;
+}
+
+#pin-header {
+  font-weight: 300;
 }
 
 .brand-logo {

@@ -19,8 +19,14 @@ function placeMarker(location) {
         position: location,
         map: map
     });
+    enterPinForm();
 }
 
 function togglePlacementMode() {
   placementMode = !placementMode;
+}
+
+function enterPinForm() {
+  console.log('Hello');
+  $('#modal1').modal('open');
 }

@@ -1,3 +1,3 @@
 import os
-from app import *
+from app import app as application
 

@@ -1,0 +1,4 @@
+DB_HOST='localhost'
+DB_NAME='breadcrumbs'
+DB_USER='username'
+DB_PASS='password'

@@ -1,16 +1,17 @@
 import os, logging
 from flask_oauthlib.client import OAuth, session
-from secrets import SECRET_GOOGLE_CLIENT_ID, SECRET_GOOGLE_CLIENT_SECRET
+from secrets import SECRET_GOOGLE_CLIENT_ID, SECRET_GOOGLE_CLIENT_SECRET, MY_SECRET_KEY
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-
+SECRET_KEY = MY_SECRET_KEY
+CSRF_ENABLED = True
 oauth = OAuth()
 
 # You must configure these 3 values from Google APIs console
 # https://code.google.com/apis/console
 GOOGLE_CLIENT_ID = SECRET_GOOGLE_CLIENT_ID
 GOOGLE_CLIENT_SECRET = SECRET_GOOGLE_CLIENT_SECRET
-REDIRECT_URI = '/authorized'  # one of the Redirect URIs from Google APIs console
+REDIRECT_URI = '/oauth-authorized'  # one of the Redirect URIs from Google APIs console
 
 google = oauth.remote_app('google',
                           base_url='https://www.google.com/accounts/',

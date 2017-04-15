@@ -10,7 +10,10 @@ def index():
         me = google.get('userinfo')
         if 'error' in me.data:
             return redirect(url_for('logout'))
-        return render_template('index.html.j2')
+        email = me.data['email']
+        user = User.query.filter_by(email=email).first()
+        pins = Pin.query.filter_by(user_id=user.id).all()
+        return render_template('index.html.j2', pins=pins)
     return redirect(url_for('login'))
 
 @app.route('/login')
@@ -50,7 +53,8 @@ def create_pin():
     email = me.data['email']
     user_id = User.query.filter_by(email=me.data['email']).first().id
     description = request.form['description']
-    pin = Pin(name, user_id, description)
+    lat, lng = request.form['lat'], request.form['lng']
+    pin = Pin(name, user_id, lat, lng, description)
     db.session.add(pin)
     db.session.commit()
     return redirect(url_for('index'))

@@ -10,7 +10,7 @@ function initMap() {
     disableDefaultUI: true
   });
   google.maps.event.addListener(map, 'click', function(event) {
-     if (placementMode) placeMarker(event.latLng);
+     if (placementMode) createPin(event.latLng);
   });
   if(typeof(lat_input) !== null && typeof(lat_input) !== 'undefined' && typeof(lng_input) !== null && typeof(lng_input) !== 'undefined'){
       displayOnePin(latLng.lat, latLng.lng);
@@ -18,12 +18,15 @@ function initMap() {
   placeAllMarkers(allPins);
 }
 
+function createPin(location) {
+  enterPinForm(location.toJSON());
+}
+
 function placeMarker(location) {
     var marker = new google.maps.Marker({
         position: location,
         map: map
     });
-    enterPinForm();
 }
 
 function togglePlacementMode() {
@@ -52,6 +55,8 @@ function placeAllMarkers(pins){
     }
 }
 
-function enterPinForm() {
+function enterPinForm(location) {
+  $('#form_lat').val(location.lat);
+  $('#form_lng').val(location.lng);
   $('#modal1').modal('open');
 }

@@ -19,7 +19,9 @@ class Pin(db.Model):
     lat = db.Column(db.Float(Precision=9))
     lng = db.Column(db.Float(Precision=9))
 
-    def __init__(self, name, user_id, description):
+    def __init__(self, name, user_id, lat, lng, description):
         self.name = name
         self.user_id = user_id
+        self.lat = lat
+        self.lng = lng
         self.description = description

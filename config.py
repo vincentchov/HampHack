@@ -1,8 +1,11 @@
 import os, logging
+from db_config import *
 from flask_oauthlib.client import OAuth, session
 from secrets import SECRET_GOOGLE_CLIENT_ID, SECRET_GOOGLE_CLIENT_SECRET, MY_SECRET_KEY
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+SQLALCHEMY_DATABASE_URI = 'mysql://' + DB_USER + ':' + DB_PASS + '@' + DB_HOST + '/' + DB_NAME
+SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 SECRET_KEY = MY_SECRET_KEY
 CSRF_ENABLED = True
 oauth = OAuth()

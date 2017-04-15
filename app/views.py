@@ -1,5 +1,5 @@
 from app import app, models
-from models import *
+from .models import *
 
 @app.route('/')
 def index():

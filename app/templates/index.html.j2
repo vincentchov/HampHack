@@ -11,27 +11,24 @@
         position: absolute;
         top: 0px;
         left: 0px;
+        z-index: -50;
        }
+
+    #userChatButton {
+      position: absolute;
+      bottom: 30px;
+      right: 60px;
+    }
 
   </style>
 {% endblock %}
 {% block content %}
 
 <div id="map"></div>
-    <script>
-      function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-      </script>
-<script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArgGYqckJLb7caGS97EybJUbB6m6eDRdg&callback=initMap">
-</script>
+
+<a id="userChatButton" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+
+
+
+
 {% endblock %}

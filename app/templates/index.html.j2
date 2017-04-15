@@ -29,7 +29,13 @@
 </ul>
 
 <!-- Google Maps Container -->
-<div id="map"></div>
+<div id="map">
+{% if latLng %}
+    <script type="text/javascript">
+        var latLng = { lat:{{ lat }}, lng:{{ lng }} };
+    </script>
+{% endif %}
+</div>
 
 <!-- Cancel Drop Tooltip -->
 <div id="cancel-drop">

@@ -1,12 +1,14 @@
-from app import app, models
+from app import app, models, db
 from .models import *
 from flask import redirect, flash, session, request, url_for, jsonify, render_template
 from config import *
+import json
 
 @app.route('/')
 def index():
     if 'google_token' in session:
         me = google.get('userinfo')
+        print(me.data)
         return render_template('index.html.j2')
     return redirect(url_for('login'))
 
@@ -32,8 +34,8 @@ def authorized():
     email = me.data['email']
     exists = User.query.filter_by(email=email).first()
     if not exists:
-        db.add(User(email))
-        db.commit()
+        db.session.add(User(email))
+        db.session.commit()
     return jsonify({"data": me.data})
 
 @google.tokengetter
@@ -58,3 +60,15 @@ def delete_pin():
         db.session.delete(pin)
         db.session.commit()
     return redirect(url_for('index'))
+
+@app.route('/pin/<string:pin_id>')
+def display_one_pin(pin_id):
+    context_dict = {}
+    pin = Pin.query.filter_by(id=pin_id).first()
+    if pin:
+        lat_input = 40.7527
+        lng_input = -73.9772
+        latLng_input = True
+    else:
+        print("Pin not found")
+    return render_template('index.html.j2', lat=lat_input, lng = lng_input, latLng = latLng_input)

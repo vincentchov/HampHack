@@ -12,6 +12,7 @@ function initMap() {
   google.maps.event.addListener(map, 'click', function(event) {
      if (placementMode) placeMarker(event.latLng);
   });
+  displayOnePin(latLng.lat, latLng.lng);
 }
 
 function placeMarker(location) {
@@ -30,16 +31,12 @@ function isFloat(n){
     return Number(n) === n && n % 1 !== 0;
 }
 
-function displayOnePin(latLng) {
-    if(typeof(latLng) === 'object' && isFloat(latLng['lat']) && isFloat(latLng['lng'])){
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: latLng,
-            disableDefaultUI: true
-        });
-        var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-        });
-    }
+
+function displayOnePin(lat_input, lng_input) {
+    var latLng = {lat: lat_input, lng: lng_input};
+    map.setCenter(latLng);
+    var marker = new google.maps.Marker({
+        position: latLng,
+        map: map
+    });
 }

@@ -12,12 +12,15 @@ function initMap() {
   google.maps.event.addListener(map, 'click', function(event) {
      if (placementMode) placeMarker(event.latLng);
   });
-  displayOnePin(latLng.lat, latLng.lng);
+  if(typeof(lat_input) !== null && typeof(lat_input) !== 'undefined' && typeof(lng_input) !== null && typeof(lng_input) !== 'undefined'){
+      displayOnePin(latLng.lat, latLng.lng);
+  }
+  placeAllMarkers(allPins);
 }
 
 function placeMarker(location) {
     var marker = new google.maps.Marker({
-        position: hampshireCollege,
+        position: location,
         map: map
     });
 }
@@ -39,4 +42,11 @@ function displayOnePin(lat_input, lng_input) {
         position: latLng,
         map: map
     });
+}
+
+function placeAllMarkers(pins){
+    for(i=0; i<pins.length; i++){
+        var latLng = {lat: pins[i].lat, lng: pins[i].lng};
+        placeMarker(latLng);
+    }
 }

@@ -59,6 +59,8 @@ def delete_pin():
     if pin:
         db.session.delete(pin)
         db.session.commit()
+    else:
+        flash("Pin not found.")
     return redirect(url_for('index'))
 
 @app.route('/pin/<string:pin_id>')
@@ -69,8 +71,19 @@ def display_one_pin(pin_id):
         lng_input = pin.lng
         latLng_input = True
     else:
-        print("Pin not found")
+        flash("Pin not found.")
     return render_template('index.html.j2', lat=lat_input,
                                             lng = lng_input,
                                             latLng_inputted = latLng_input)
-                                            
+
+@app.route('/user/<string:email>')
+def display_users_pins(email):
+    user = User.query.filter_by(email=email).first()
+    pins = None
+    if user:
+        pins = Pin.query.filter_by(user_id = user.id).all()
+        if len(pins) == 0:
+            flash("No pins found for this user.")
+    else:
+        flash("User not found.")
+    return render_template('index.html.j2', pins=pins, user=user)

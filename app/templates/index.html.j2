@@ -24,17 +24,48 @@
     <li>
       <a class="subheader">
         My Pins
-        <i class="material-icons">pin_drop</i>
+        <i class="material-icons">filter_drama</i>
       </a>
     </li>
     <li>
     <!-- TODO: Render all pins in here -->
     {% if pins %}
+    <ul class="collapsible" data-collapsible="accordion">
         {% for pin in pins %}
         <li>
-            <a>{{ pin.name }}</a>
+            <div class="collapsible-header"><i class="material-icons">place</i>{{ pin.name }}</div>
+            <div  class="collapsible-body">
+              <ul>
+                <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">description</i>Description</div>
+                  <div class="collapsible-body"><span>{{ pin.description }}</span></div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">share</i>Share Pin</div>
+                  <div class="collapsible-body">
+                     <input type="text" name="share_url" id="sharer" value="{{request.url}}pin/{{pin.id}}" readonly><br>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">delete_forever</i>Delete</div>
+                      <div class="collapsible-body">
+                        <form action="/pin/delete" method="post">
+                          <input type="hidden" name="pin_id" value="{{pin.id}}">
+                          <button type="submit" class="waves-effect btn-flat">
+                            Confirm
+                          </button>
+                        </form>
+                      </div>
+                  </div>
+                </div>
+                </li>
+              </ul>
+              </ul>
+            </div>
         </li>
         {% endfor %}
+      </ul>
     {% endif %}
 </ul>
 

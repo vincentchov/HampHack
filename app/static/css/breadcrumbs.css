@@ -29,6 +29,10 @@
   margin: 0 10px;
 }
 
+.collapsible-body {
+  padding-left: 15px !important;
+}
+
 .left-menu {
   margin-top: 65px !important;
 }

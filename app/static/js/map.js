@@ -3,10 +3,16 @@ var map;
 var placementMode = false;
 
 function initMap() {
-  var hampshireCollege = {lat: 42.3241, lng: -72.5307};
+  var initialLoc;
+  if (allPins.length == 0) {
+    initialLoc = {lat: 42.3241, lng: -72.5307};
+  } else {
+    var lastPin = allPins[allPins.length-1];
+    initialLoc = {lat: lastPin.lat, lng: lastPin.lng};
+  }
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
-    center: hampshireCollege,
+    center: initialLoc,
     disableDefaultUI: true
   });
   google.maps.event.addListener(map, 'click', function(event) {
@@ -51,7 +57,7 @@ function isFloat(n){
 
 function displayOnePin(lat_input, lng_input) {
     var latLng = {lat: lat_input, lng: lng_input};
-    map.setCenter(latLng);
+    map.panTo(latLng);
     var marker = new google.maps.Marker({
         position: latLng,
         map: map

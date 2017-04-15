@@ -33,8 +33,11 @@
     <ul class="collapsible" data-collapsible="accordion">
         {% for pin in pins %}
         <li>
-          <div class="collapsible-header"><i class="material-icons">place</i>{{ pin.name }}</div>
-          <div  class="collapsible-body">
+          <div onclick="displayOnePin({{pin.lat}},{{pin.lng}})"
+              class="collapsible-header">
+              <i class="material-icons">place</i>{{ pin.name }}
+          </div>
+          <div class="collapsible-body">
             <ul class="collapsible" data-collapsible="accordion">
               <li>
                 <div class="collapsible-header"><i class="material-icons">description</i>Description</div>

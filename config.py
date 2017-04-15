@@ -4,7 +4,7 @@ from flask_oauthlib.client import OAuth, session
 from secrets import SECRET_GOOGLE_CLIENT_ID, SECRET_GOOGLE_CLIENT_SECRET, MY_SECRET_KEY
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://' + DB_USER + ':' + DB_PASS + '@' + DB_HOST + '/' + DB_NAME
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://' + 'vincenzo' + ':' + 'JaWnNyDOrsqJWCgTXhXz' + '@' + 'breadcrumbs.caosexgo1ndr.us-east-1.rds.amazonaws.com:3306' + '/' + 'breadcrumbs'
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 SECRET_KEY = MY_SECRET_KEY
 CSRF_ENABLED = True
@@ -29,3 +29,5 @@ google = oauth.remote_app(
     access_token_url='https://accounts.google.com/o/oauth2/token',
     authorize_url='https://accounts.google.com/o/oauth2/auth',
 )
+
+WSGI_APPLICATION = 'app.wsgi.application'

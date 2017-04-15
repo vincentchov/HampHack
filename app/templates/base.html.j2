@@ -14,7 +14,7 @@
   <div id="content">{% block content %}{% endblock %}</div>
   <div id="footer">
     {% block footer %}
-    &copy; Copyright 2010 by <a href="http://domain.invalid/">you</a>.
+
     {% endblock %}
   </div>
 </body>
@@ -26,6 +26,10 @@
     crossorigin="anonymous"></script>
     <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPpuwK5-NqOufcmSTAAeU0QGosPqHcp7U&callback=initMap">
+  </script>
+  <script src="../static/js/map.js"></script>
 
 </body>
 </html>

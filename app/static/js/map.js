@@ -16,11 +16,30 @@ function initMap() {
 
 function placeMarker(location) {
     var marker = new google.maps.Marker({
-        position: location,
+        position: hampshireCollege,
         map: map
     });
 }
 
 function togglePlacementMode() {
   placementMode = !placementMode;
+// Used to check if an inputted LatLng object is valid
+}
+
+function isFloat(n){
+    return Number(n) === n && n % 1 !== 0;
+}
+
+function displayOnePin(latLng) {
+    if(typeof(latLng) === 'object' && isFloat(latLng['lat']) && isFloat(latLng['lng'])){
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: latLng,
+            disableDefaultUI: true
+        });
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+        });
+    }
 }

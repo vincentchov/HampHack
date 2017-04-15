@@ -27,6 +27,5 @@ function togglePlacementMode() {
 }
 
 function enterPinForm() {
-  console.log('Hello');
   $('#modal1').modal('open');
 }

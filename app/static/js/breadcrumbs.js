@@ -2,12 +2,9 @@ $(document).ready(function() {
   $('.tap-target').tapTarget('open');
   /* Setup event listeners */
   $('#add-pin').click(enterPlacementMode);
+  /* Initialize modals */
+  $('.modal').modal();
 });
-
-$(document).ready(function(){
-   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-   $('.modal').modal();
- });
 
 function enterPlacementMode() {
   if (placementMode) {

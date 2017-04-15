@@ -4,6 +4,8 @@ $(document).ready(function() {
   $('#add-pin').click(enterPlacementMode);
   /* Initialize modals */
   $('.modal').modal();
+  /* Initialize collapsible */
+  $('.collapsible').collapsible();
 });
 
 function enterPlacementMode() {

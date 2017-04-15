@@ -19,12 +19,13 @@
 
 #cancel-drop {
   position: absolute;
-  bottom: 35px;
-  right: 100px;
+  bottom: 42px;
+  right: 90px;
   background-color: rgba(0,0,0,0.3);
-  padding: 8px;
+  padding: 4px 15px;
   display: none;
   border-radius: 5px;
+  margin: 0 10px;
 }
 
 .left-menu {

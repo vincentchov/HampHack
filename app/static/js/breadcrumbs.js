@@ -6,11 +6,11 @@ $(document).ready(function() {
 function enterPlacementMode() {
   if (placementMode) {
     $('#add-pin-icon').html('add_location');
+    $('#cancel-drop').hide('slide', { direction: 'right' }, 250);
     $('.toast').remove();
-    $('#cancel-drop').hide();
   } else {
     Materialize.toast('Click anywhere to drop a pin', 4000);
-    $('#cancel-drop').show();
+    $('#cancel-drop').show('slide', { direction: 'right' }, 250);
     $('#add-pin-icon').html('close');
   }
   togglePlacementMode();

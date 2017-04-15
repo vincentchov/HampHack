@@ -2,34 +2,36 @@
 <html>
 <head>
   {% block head %}
-  <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-  <!-- Compiled and minified CSS -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="../static/css/breadcrumbs.css">
   <title>{% block title %}{% endblock %} - Breadcrumbs</title>
   {% endblock %}
 </head>
 
 <body>
+  <div id="header">
+    {% block header %}
+    {% endblock %}
+  </div>
   <div id="content">{% block content %}{% endblock %}</div>
   <div id="footer">
     {% block footer %}
 
     {% endblock %}
   </div>
-</body>
 
-<body>
+  <!-- JavaScript Imports -->
   <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-    <!-- Compiled and minified JavaScript -->
+    crossorigin="anonymous">
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
   <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPpuwK5-NqOufcmSTAAeU0QGosPqHcp7U&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPpuwK5-NqOufcmSTAAeU0QGosPqHcp7U&callback=initMap">
   </script>
   <script src="../static/js/map.js"></script>
-
+  <script src="../static/js/breadcrumbs.js"></script>
 </body>
 </html>

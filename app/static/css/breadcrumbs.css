@@ -43,4 +43,9 @@
 
 .add-pin-help {
   color: white;
+  position: relative !important;
+}
+
+.tap-target-wrapper {
+  position: fixed !important;
 }

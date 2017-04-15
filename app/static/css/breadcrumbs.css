@@ -41,6 +41,10 @@
   font-weight: 300;
 }
 
+.info-window-description {
+  padding-bottom: 20px;
+}
+
 .brand-logo {
   padding-left: 10px !important;
 }
@@ -52,4 +56,9 @@
 
 .tap-target-wrapper {
   position: fixed !important;
+}
+
+.header-logo {
+  margin: 5px 10px 0 10px;
+  width: 50px;
 }

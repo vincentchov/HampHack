@@ -6,9 +6,9 @@
 {% block header %}
 <nav>
   <div class="nav-wrapper light-blue lighten-1">
-    <a href="#" class="brand-logo">
-      <i class="material-icons">person_pin</i>
-      BreadCrumbs
+    <img src="../static/img/toast-icon.svg" class="header-logo"></img>
+    <a href="/" class="brand-logo">
+      <span> BreadCrumbs </span>
     </a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="/logout">Logout</a></li>
@@ -77,7 +77,13 @@
         var latLng = { lat:{{ lat }}, lng:{{ lng }} };
     {% elif pins %}
         {% for pin in pins %}
-            allPins.push({ lat:{{ pin.lat }}, lng:{{ pin.lng }} });
+            allPins.push({
+              name: "{{ pin.name }}",
+              user_email: "{{ pin.user.email }}",
+              description: "{{ pin.description }}",
+              lat: {{ pin.lat }},
+              lng: {{ pin.lng }},
+            });
         {% endfor %}
     {% endif %}
 </script>

@@ -27,11 +27,30 @@
         <i class="material-icons">pin_drop</i>
       </a>
     </li>
+    <li>
     <!-- TODO: Render all pins in here -->
+    {% if pins %}
+        {% for pin in pins %}
+        <li>
+            <a>{{ pin.name }}</a>
+        </li>
+        {% endfor %}
+    {% endif %}
 </ul>
 
 <!-- Google Maps Container -->
-<div id="map"></div>
+<div id="map">
+<script type="text/javascript">
+    {% if latLng_inputted %}
+        var latLng = { lat:{{ lat }}, lng:{{ lng }} };
+    {% elif pins %}
+        var allPins = [];
+        {% for pin in pins %}
+            allPins.push({ lat:{{ pin.lat }}, lng:{{ pin.lng }} });
+        {% endfor %}
+    {% endif %}
+</script>
+</div>
 
 <!-- Cancel Drop Tooltip -->
 <div id="cancel-drop">

@@ -22,11 +22,21 @@ function createPin(location) {
   enterPinForm(location.toJSON());
 }
 
-function placeMarker(location) {
-    var marker = new google.maps.Marker({
-        position: location,
-        map: map
-    });
+function placeMarker(pin) {
+  var latLng = {lat: pin.lat, lng: pin.lng};
+  var title = '<h5>' + pin.name + '</h5><br />';
+  var sign = '<div class="chip">' + pin.user_email + '</div><br />';
+  var description = '<div class="info-window-description"><h6>' + pin.description + '</h6></div>';
+  var infowindow = new google.maps.InfoWindow({
+    content: title + description + sign
+  });
+  var marker = new google.maps.Marker({
+      position: latLng,
+      map: map
+  });
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
 }
 
 function togglePlacementMode() {
@@ -50,8 +60,7 @@ function displayOnePin(lat_input, lng_input) {
 
 function placeAllMarkers(pins){
     for(i=0; i<pins.length; i++){
-        var latLng = {lat: pins[i].lat, lng: pins[i].lng};
-        placeMarker(latLng);
+        placeMarker(pins[i]);
     }
 }
 

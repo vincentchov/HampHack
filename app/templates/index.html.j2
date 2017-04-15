@@ -15,12 +15,27 @@
 {% endblock %}
 {% block content %}
 
+<ul class="side-nav left-menu fixed">
+    <li>
+      <a class="subheader">
+        My Pins
+        <i class="material-icons">pin_drop</i>
+      </a>
+    </li>
+    <!-- TODO: Render all pins in here -->
+</ul>
+
 <!-- Google Maps Container -->
 <div id="map"></div>
 
+<!-- Cancel Drop Tooltip -->
+<div id="cancel-drop">
+  Cancel
+</div>
+
 <!-- Create Pin Button -->
 <a id="add-pin" class="btn-floating btn-large waves-effect waves-light red" >
-  <i id="add-pin-icon" class="material-icons">add</i>
+  <i id="add-pin-icon" class="material-icons">add_location</i>
 </a>
 
 {% endblock %}

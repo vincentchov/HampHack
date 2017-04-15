@@ -5,3 +5,8 @@ __pycache__
 secrets.py
 password.py
 db_config.py
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

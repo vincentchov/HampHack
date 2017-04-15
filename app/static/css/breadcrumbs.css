@@ -1,0 +1,37 @@
+.important {
+  color: #336699;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -50;
+}
+
+#add-pin {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+#cancel-drop {
+  position: absolute;
+  bottom: 42px;
+  right: 90px;
+  background-color: rgba(0,0,0,0.3);
+  padding: 4px 15px;
+  display: none;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.left-menu {
+  margin-top: 65px !important;
+}
+
+.brand-logo {
+  padding-left: 10px !important;
+}

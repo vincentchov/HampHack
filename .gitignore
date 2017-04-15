@@ -2,9 +2,6 @@ env
 *.pyc
 __pycache__
 *.sqlite3
-secrets.py
-password.py
-db_config.py
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

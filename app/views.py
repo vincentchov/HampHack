@@ -7,6 +7,8 @@ from config import *
 def index():
     if 'google_token' in session:
         me = google.get('userinfo')
+        if 'error' in me.data:
+            return redirect(url_for('logout'))
         return render_template('index.html.j2')
     return redirect(url_for('login'))
 

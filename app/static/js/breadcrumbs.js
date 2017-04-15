@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $('.tap-target').tapTarget('open');
   /* Setup event listeners */
   $('#add-pin').click(enterPlacementMode);
 })
@@ -10,8 +11,8 @@ function enterPlacementMode() {
     $('.toast').remove();
   } else {
     Materialize.toast('Click anywhere to drop a pin', 4000);
-    $('#cancel-drop').show('slide', { direction: 'right' }, 250);
     $('#add-pin-icon').html('close');
+    $('#cancel-drop').show('slide', { direction: 'right' }, 250);
   }
   togglePlacementMode();
 }

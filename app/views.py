@@ -43,7 +43,8 @@ def get_google_oauth_token():
 @app.route('/pin/create', methods=['POST'])
 def create_pin():
     name = request.form['name']
-    user_id = request.form['user_id']
+    me = google.get('userinfo')
+    user_id = User.query.filter_by(email=me.data['email']).first().id
     description = request.form['description']
     pin = Pin(name, user_id, description)
     db.session.add(pin)
